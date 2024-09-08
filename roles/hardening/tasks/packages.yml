@@ -1,0 +1,6 @@
+---
+- name: Install multiple packages using apt
+  apt:
+      name: "{{ package_list }}"
+      state: present
+      update_cache: yes

@@ -1,0 +1,20 @@
+---
+#- name: Debian Based OS Hardening Role
+#- name: Include all var directory variables
+#  ansible.builtin.include_tasks: include-vars.yml
+#  tags: include_variables
+
+- name: Install all necessery packages
+  ansible.builtin.include_tasks: packages.yml
+  tags: installation
+
+- name: SSH Hardening
+  ansible.builtin.include_tasks: ssh-hardening.yml
+  tags: hardening
+
+- name: Auditd Configuration
+  ansible.builtin.include_tasks: auditd.yml
+  tags: hardening, auditd_configuration
+
+- name: Flush handlers
+  meta: flush_handlers

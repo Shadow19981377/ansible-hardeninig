@@ -1,0 +1,7 @@
+---
+- name: Include all .yaml and .yml files in roles/defaults and all nested directories
+  ansible.builtin.include_vars:
+    dir: vars/
+    extensions:
+      - 'yaml'
+      - 'yml'

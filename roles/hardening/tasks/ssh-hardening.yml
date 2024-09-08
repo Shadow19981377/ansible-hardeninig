@@ -1,0 +1,90 @@
+---
+- name: Disable AllowTcpForwarding
+  lineinfile: 
+    path: /etc/ssh/sshd_config
+    regexp: '^#?AllowTcpForwarding'
+    line: 'AllowTcpForwarding no'
+    state: present 
+  notify: 
+    - Restart sshd    
+  
+- name: Change ClientAliveCountMax
+  lineinfile: 
+    path: /etc/ssh/sshd_config
+    regexp: '^#?ClientAliveCountMax'
+    line: 'ClientAliveCountMax 2'
+    state: present
+  notify: 
+    - Restart sshd    
+
+- name: Disable Compression
+  lineinfile: 
+    path: /etc/ssh/sshd_config
+    regexp: '^#?Compression'
+    line: 'Compression no'
+    state: present 
+  notify: 
+    - Restart sshd    
+
+- name: Change LogLevel Verbosity
+  lineinfile: 
+    path: /etc/ssh/sshd_config
+    regexp: '^#?LogLevel'
+    line: 'LogLevel VERBOSE'
+    state: present 
+  notify: 
+    - Restart sshd    
+
+- name: Change MaxAuthTries
+  lineinfile: 
+    path: /etc/ssh/sshd_config
+    regexp: '^#?MaxAuthTries'
+    line: 'MaxAuthTries 3'
+    state: present 
+  notify: 
+    - Restart sshd    
+
+- name: Change MaxSessions
+  lineinfile: 
+    path: /etc/ssh/sshd_config
+    regexp: '^#?MaxSessions'
+    line: 'MaxSessions 2'
+    state: present 
+  notify: 
+    - Restart sshd    
+
+- name: Change Default Port
+  lineinfile: 
+    path: /etc/ssh/sshd_config
+    regexp: '^#?Port'
+    line: 'Port 8090'
+    state: present 
+  notify: 
+    - Restart sshd    
+      
+- name: Disable TCPKeepAlive
+  lineinfile: 
+    path: /etc/ssh/sshd_config
+    regexp: '^#?TCPKeepAlive'
+    line: 'TCPKeepAlive no'
+    state: present 
+  notify: 
+    - Restart sshd    
+      
+- name: Disable X11Forwarding
+  lineinfile: 
+    path: /etc/ssh/sshd_config
+    regexp: '^#?X11Forwarding'
+    line: 'X11Forwarding no'
+    state: present 
+  notify: 
+    - Restart sshd    
+      
+- name: Disable AllowAgentForwarding
+  lineinfile: 
+    path: /etc/ssh/sshd_config
+    regexp: '^#?AllowAgentForwarding'
+    line: 'AllowAgentForwarding no'
+    state: present 
+  notify: 
+    - Restart sshd    

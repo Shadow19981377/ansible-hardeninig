@@ -1,0 +1,19 @@
+#    - name: Ensure Lynis is installed
+#      apt:
+#        name: lynis
+#        state: present
+#      when: ansible_os_family == "Debian"
+#
+#    - name: Run Lynis audit
+#      command: lynis audit system --quiet --no-colors
+#      register: lynis_output
+#      changed_when: False
+
+    - name: Extract Lynis hardening index score
+      shell: "grep 'Hardening index' /var/log/lynis.log | awk '{print $6}'"
+      register: lynis_score
+        # changed_when: False
+
+    - name: Display Lynis score
+      debug:
+        msg: "Lynis Hardening Index Score: {{ lynis_score.stdout }}"

@@ -1,0 +1,6 @@
+---
+- name: Debian Based OS Hardening 
+  hosts: arvan
+  become: True
+  roles:
+    - hardening
